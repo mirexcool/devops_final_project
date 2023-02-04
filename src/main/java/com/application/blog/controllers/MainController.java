@@ -13,10 +13,10 @@ public class MainController {
         return "home";
     }
 
-    @GetMapping("/about")
+    @GetMapping("/cv")
     public String aboutPage(Model model) {
         model.addAttribute("title", "Information about me");
-        return "home";
+        return "cv";
     }
 
 }
