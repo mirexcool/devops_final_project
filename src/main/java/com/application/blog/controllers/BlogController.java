@@ -48,13 +48,13 @@ public class BlogController {
             return "redirect:/blog";
         }
         Optional<Post> postOp = postRepository.findById(id);
-        //Post post = postRepository.findById(id).orElseThrow();
+        Post post = postRepository.findById(id).orElseThrow();
         ArrayList<Post> res = new ArrayList<>();
 
         postOp.ifPresent(res::add);
         model.addAttribute("post", res);
-        //post.setViews(post.getViews() + 1);
-        //postRepository.save(post);
+        post.setViews(post.getViews() + 1);
+        postRepository.save(post);
         return "blog-details";
     }
 
