@@ -77,21 +77,29 @@ public class BlogController {
                               @RequestParam String anons,
                               @RequestParam String full_text,
                               Model model){
-        Post post = postRepository.findById(id).orElseThrow();
+        try {
+            Post post = postRepository.findById(id).orElseThrow();
+            post.setTitle(title);
+            post.setAnons(anons);
+            post.setFullText(full_text);
+            postRepository.save(post);
+        }catch (Exception e){
 
-        post.setTitle(title);
-        post.setAnons(anons);
-        post.setFullText(full_text);
-        postRepository.save(post);
+        }
+
+
         return "redirect:/blog";
     }
 
     @PostMapping("/blog/{id}/remove")
     public String blogPostDelete(@PathVariable(value = "id") long id,
                                  Model model){
-        Post post = postRepository.findById(id).orElseThrow();
+        try {
+            Post post = postRepository.findById(id).orElseThrow();
+            postRepository.delete(post);
+        }catch (Exception e){
 
-        postRepository.delete(post);
+        }
         return "redirect:/blog";
     }
 }
