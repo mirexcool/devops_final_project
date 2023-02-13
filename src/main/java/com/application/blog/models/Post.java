@@ -10,7 +10,7 @@ public class Post {
     @Id
     @GeneratedValue (strategy = GenerationType.AUTO)
     private Long id;
-    private String title, anons, fullText;
+    private String title, anons, full_text;
     private int views;
 
     public Long getId() {
@@ -38,11 +38,11 @@ public class Post {
     }
 
     public String getFullText() {
-        return fullText;
+        return full_text;
     }
 
-    public void setFullText(String fullText) {
-        this.fullText = fullText;
+    public void setFullText(String full_text) {
+        this.full_text = full_text;
     }
 
     public int getViews() {
@@ -53,4 +53,12 @@ public class Post {
         this.views = views;
     }
 
+    public Post() {
+    }
+
+    public Post(String title, String anons, String full_text) {
+        this.title = title;
+        this.anons = anons;
+        this.full_text = full_text;
+    }
 }
